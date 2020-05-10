@@ -1,0 +1,7 @@
+type: nonreciprocal
+samples:
+  - input: |
+      7
+      500 600
+    output: |
+      OK

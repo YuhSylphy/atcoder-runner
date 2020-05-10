@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "name": "Linux",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/usr/local/boost",
+        "/usr/lib/llvm-10/bin/../include/c++/v1",
+        "/usr/local/include",
+        "/usr/include/x86_64-linux-gnu",
+        "/usr/include"
+      ],
+      "defines": [],
+      "compilerPath": "/usr/bin/clang++-10",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "clang-x64",
+      "compilerArgs": ["-Wall", "-stdlib=libc++"]
+    }
+  ],
+  "version": 4
+}

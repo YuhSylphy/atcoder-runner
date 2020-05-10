@@ -1,0 +1,70 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build with Clang",
+      "type": "shell",
+      "command": "clang++-10",
+      "args": [
+        "-std=c++17",
+        "-stdlib=libc++",
+        "${file}",
+        "-o",
+        "bin/${relativeFileDirname}/${fileBasenameNoExtension}.out",
+        "-g",
+        "-O2",
+        "-v"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": ["mkdir bin"]
+    },
+    {
+      "label": "mkdir bin",
+      "type": "shell",
+      "command": "mkdir",
+      "args": ["-p", "bin/${relativeFileDirname}"]
+    },
+    {
+      "label": "Run Testing",
+      "type": "shell",
+      "command": "./bin/runner",
+      "args": [
+        "bin/${relativeFileDirname}/${fileBasenameNoExtension}.out",
+        "${relativeFileDirname}/${fileBasenameNoExtension}.yaml"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "dependsOn": ["Build with Clang"]
+    },
+    {
+      "label": "Build runner",
+      "type": "shell",
+      "command": "clang++-10",
+      "args": [
+        "-std=c++17",
+        "-stdlib=libc++",
+        "src/runner/runner.cpp",
+        "-o",
+        "bin/runner",
+        "-lyaml-cpp",
+        "-g",
+        "-O2",
+        "-v"
+      ],
+      "group": "build",
+      "dependsOn": "mkdir(runner)",
+      "problemMatcher": ["$lessCompile"]
+    },
+    {
+      "label": "mkdir(runner)",
+      "type": "shell",
+      "command": "mkdir",
+      "args": ["-p", "bin"]
+    }
+  ]
+}
