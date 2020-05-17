@@ -8,17 +8,6 @@ using namespace std;
 using ll = long long;
 using ull = unsigned long long;
 
-namespace std {
-	template<typename Iterator>
-	Iterator begin(pair<Iterator, Iterator> p) {
-		return p.first;
-	}
-	template<typename Iterator>
-	Iterator end(pair<Iterator, Iterator> p) {
-		return p.second;
-	}
-}
-
 bool search(
 	deque<ll>& q,
 	vector<ll>& v,
